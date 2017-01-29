@@ -1,0 +1,19 @@
+{
+  "name": "moodsapp",
+  "version": "1.0.0",
+  "description": "\"A simple Chat app\" ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muirurikin/Moods-app.git"
+  },
+  "author": "\"Alexona Kinuthia and Harrison Kamau\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muirurikin/Moods-app/issues"
+  },
+  "homepage": "https://github.com/muirurikin/Moods-app#readme"
+}
