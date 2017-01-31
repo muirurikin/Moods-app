@@ -1,5 +1,6 @@
 //import module
 var express = require('express'); 
+var path = require('path');
 
 //create express app
 var app = express(); 
@@ -10,7 +11,7 @@ app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3000); 
 
 app.get("/", function(req, res) {
-    res.sendFile("/home/alexona/Documents/Moods-app/views/" + "index.html");
+    res.sendFile(path.join(__dirname, "/views/index.html"));
 });
 
 //start server
