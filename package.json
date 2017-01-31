@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/muirurikin/Moods-app/issues"
   },
-  "homepage": "https://github.com/muirurikin/Moods-app#readme"
+  "homepage": "https://github.com/muirurikin/Moods-app#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "routes": "^2.1.0"
+  }
 }
