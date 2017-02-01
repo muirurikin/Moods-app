@@ -31,10 +31,10 @@ app.get('/user-profile', function(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, file) {
         if(err)
-        return res.redirect(303, '/error');
+        return res.redirect(303, '/error.html');
         console.log('File Received');
         console.log(file);
-        res.redirect(303, '/user-profile');
+        res.redirect(303, '/error.html');
     });
 });
 
