@@ -17,6 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 routes(app);
 
+app.post("/home", function(req, res) {
+    console.log(req.body);
+    res.redirect(303, '/chatroom.html');
+});
+
 app.post("/process", function(req, res) {
     console.log(req.body);
     res.redirect(303, '/user-profile.html');

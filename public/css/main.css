@@ -29,6 +29,7 @@
     padding-top: 20px;
 }
 .footer {
+    background: #293f50;
     text-align: center;
     height: 80px;
     font-size: 30px;
@@ -49,6 +50,7 @@
     font-size: 30px;
 }
 .nav {
+    background: #293f50;
     text-align: right;
     font-size: 20px;
     padding-right: 20px;
@@ -81,7 +83,7 @@ typography
   ========================================
 */
 body {
-  background: #293f50;
+
   color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
