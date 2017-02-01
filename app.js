@@ -1,6 +1,7 @@
 //import module
-var express = require('express'); 
-var path = require('path');
+
+var express = require('express');
+var routes = require('./server/routes'); 
 
 //create express app
 var app = express(); 
@@ -10,9 +11,8 @@ app.disable('x-powered-by');
 //set port
 app.set('port', process.env.PORT || 3000); 
 
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "/views/index.html"));
-});
+app.use(express.static('public'));
+routes(app);
 
 //start server
 app.listen(app.get('port'), function() {
