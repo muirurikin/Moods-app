@@ -1,5 +1,9 @@
-//import required modules
+// set mongoDB uri
+if(!process.env.MONGODB_URI) {
+  require('dotenv').config();
+}
 
+//import required modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
