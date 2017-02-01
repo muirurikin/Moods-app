@@ -1,0 +1,23 @@
+.pic {
+    border: solid 2px gainsboro;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 1px;
+    padding-right: 1px;      
+}
+/*
+=======
+button
+=======
+*/
+.btn {
+    align-items: center;
+    font-weight: bold; 
+    border: solid 1px black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px; 
+    color: whitesmoke;
+    background-color: darkblue;
+}
