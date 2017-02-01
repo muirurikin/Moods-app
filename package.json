@@ -18,6 +18,7 @@
   "homepage": "https://github.com/muirurikin/Moods-app#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "formidable": "^1.1.1",
     "mongoose": "^4.8.1",
