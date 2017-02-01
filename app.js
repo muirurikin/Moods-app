@@ -34,7 +34,7 @@ app.get('/user-profile', function(req, res) {
         return res.redirect(303, '/error.html');
         console.log('File Received');
         console.log(file);
-        res.redirect(303, '/error.html');
+        res.redirect(303, '/success.html');
     });
 });
 
