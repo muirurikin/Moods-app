@@ -3,6 +3,9 @@ var express = require('express');
 var formidable = require('formidable');
 var bodyParser = require('body-parser');
 var routes = require('./server/routes');
+var mongo = require('mongodb').MongoClient,
+    client = require('socket.io').listen(8080).sockets;
+
 
 //create express app
 var app = express();
