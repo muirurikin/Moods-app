@@ -5,9 +5,10 @@ var routes = function(app) {
     app.get(function (req, res) {
            res.sendFile('index.html', { root: path.join(__dirname, '../../public')});
        });
-    app.route('/user-profile')
-    app.get(function (req, res) {
-           res.sendFile('index.html', { root: path.join(__dirname, '../../public')});
+    app.route('/chatroom')
+    app.post("/home", function (req, res) {
+           console.log(req.body);
+           res.sendFile('chatroom.html', { root: path.join(__dirname, '../../public')});
        });
 }
 module.exports = routes;

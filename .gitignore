@@ -2,6 +2,7 @@
 node_modules
 *~
 credentials.js
+.env
 # Logs
 logs
 *.log

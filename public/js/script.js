@@ -7,7 +7,7 @@
     chatName = getNode('.chat-name');
 
     try {
-        var socket = io.connect('http://127.0.0.1:5000');
+        var socket = io.connect('http://127.0.0.1:3700');
     } catch (e) {
         //set status to warn user
     }
