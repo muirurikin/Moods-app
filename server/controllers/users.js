@@ -9,4 +9,3 @@
 
 // import the user model
 var User = require('../models/user');
-console.log(User);
