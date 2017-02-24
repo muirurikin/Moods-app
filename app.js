@@ -50,7 +50,10 @@ app.use(bodyParser.json());
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// serve public folder
+// set view engine
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(express.static('public'));
 
 //start server
