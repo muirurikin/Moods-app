@@ -1,4 +1,4 @@
-// set mongoDB uri
+// Load environment variables
 if(!process.env.MONGODB_URI) {
   require('dotenv').config();
 }
@@ -13,7 +13,7 @@ var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 var formidable = require('formidable');
 var bodyParser = require('body-parser');
-var routes = require('./server/routes');
+// var routes = require('./server/routes');
 
 var routes = require('./server/routes/index');
 var users = require('./server/routes/users');
@@ -25,8 +25,10 @@ io.on('connection', function() {
 
 app.disable('x-powered-by');
 
+// serve the routes
 app.use('/', routes);
 app.use('/users', users);
+
 //set port
 app.set('port', process.env.PORT || 5000);
 
@@ -42,8 +44,16 @@ db.once('open', function() {
     console.log('Connected successfully :');
 });
 
+// create application/json parser
+app.use(bodyParser.json());
+
+// create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// serve public folder
 app.use(express.static('public'));
+
+// service routes
 routes(app);
 
 //start server
