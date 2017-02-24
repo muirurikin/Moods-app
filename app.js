@@ -41,7 +41,7 @@ var db = mongoose.connection;
 //connect to db
 db.on('error', console.error.bind(console, "connection error :"));
 db.once('open', function() {
-    console.log('Connected successfully :');
+    console.log('Connected successfully to the db');
 });
 
 // create application/json parser
@@ -52,9 +52,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // serve public folder
 app.use(express.static('public'));
-
-// service routes
-routes(app);
 
 //start server
 http.listen(app.get('port'), function() {
