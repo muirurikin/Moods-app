@@ -9,6 +9,7 @@ var router = express.Router();
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var flash = require('connect-flash');
 
 var mongoose = require('mongoose');
 var formidable = require('formidable');
@@ -24,6 +25,9 @@ io.on('connection', function() {
 });
 
 app.disable('x-powered-by');
+
+// connect flash
+app.user(flash());
 
 // serve the routes
 app.use('/', routes);
