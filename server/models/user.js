@@ -15,7 +15,7 @@ var UserSchema = new Schema({
 // create a User model using the define Schema
 var User = mongoose.model('User', UserSchema);
 
-// use bcrypt to hash a new user
+// use bcrypt to hash a new user's password
 module.exports.createUser = function(newUser, callback){
     bcrypt.genSalt(10, function(err, salt){
         bcrypt.hash(newUser.password, salt, function(err, hash){
