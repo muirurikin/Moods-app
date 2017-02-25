@@ -13,7 +13,7 @@ var User = require('../models/user');
 // Register route
 router.get('/register', function(req, res){
     res.render('register');
-})
+});
 
 // Login route
 router.get('/login', function(req, res){
@@ -28,27 +28,24 @@ router.post('/register', function(req, res){
     // fectch values from the register.html form
     var name = req.body.name;
     var email = req.body.email;
+    var confirmEmail = req.body.email2;
     var password = req.body.password;
     var confirmPassword = req.body.password2;
 
     // create a new user and save to db using model User
-    // create newUser object
     var newUser = new User({
-        name: name,
-        email: email,
-        password: password
+      name: name,
+			email:email,
+			password: password
     });
-
-    // save the newUser to User collection
+    //save newUser to User coll
     User.createUser(newUser, function(err, user){
-        if(err) throw err;
-        // flash a success message if no error thrown
-        req.flash('success_msg', 'You are now registered. Please login');
-
-        // redirect user to login page
-        res.redirect('/users/login')
-    })
+			if(err) throw err;
+			// console.log(user);
+      //Flash success message if no error thrown
+      req.flash('success_msg', 'You are now registered and can login');
+      res.redirect('/users/login');
+    });
 });
 
 module.exports = router;
-
