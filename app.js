@@ -27,7 +27,7 @@ io.on('connection', function() {
 app.disable('x-powered-by');
 
 // connect flash
-app.user(flash());
+app.use(flash());
 
 // define flash messages - Global variables
 app.use(function(req, res, next){
@@ -35,7 +35,7 @@ app.use(function(req, res, next){
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
-    
+
     next();
 
 })
