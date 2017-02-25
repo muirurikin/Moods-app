@@ -15,6 +15,7 @@ var session = require('express-session')
 var mongoose = require('mongoose');
 var formidable = require('formidable');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 // var routes = require('./server/routes');
 
 var routes = require('./server/routes/index');
@@ -48,9 +49,6 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.use('/users', users);
 
-//set port
-app.set('port', process.env.PORT || 5000);
-
 //mongo config
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
@@ -68,6 +66,7 @@ app.use(bodyParser.json());
 
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // set view engine
 app.set('views', __dirname + '/views');
@@ -76,6 +75,9 @@ app.set('view engine', 'html');
 
 // serve static files
 app.use(express.static('public'));
+
+//set port
+app.set('port', process.env.PORT || 5000);
 
 //start server
 http.listen(app.get('port'), function() {
