@@ -52,7 +52,7 @@ router.post('/register', function(req, res){
      } else{
         // create newUser object
     var newUser = new User({
-        name: "name",
+        name: name,
         email: email,
         password: password
     });
