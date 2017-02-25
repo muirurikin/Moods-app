@@ -11,15 +11,50 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var flash = require('connect-flash');
 var session = require('express-session')
+var cookieParser = require('cookie-parser')
+var expressValidator = require('express-validator');
 
 var mongoose = require('mongoose');
 var formidable = require('formidable');
 var bodyParser = require('body-parser');
-// var routes = require('./server/routes');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+
 
 var routes = require('./server/routes/index');
 var users = require('./server/routes/users');
 
+//set port
+app.set('port', process.env.PORT || 5000);
+
+//mongo config
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI);
+var db = mongoose.connection;
+console.log(process.env.MONGODB_URI);
+
+//connect to db
+db.on('error', console.error.bind(console, "connection error :"));
+db.once('open', function() {
+    console.log('Connected successfully to the db');
+});
+
+// create application/json parser
+app.use(bodyParser.json());
+
+// create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({ extended: false }));
+// use cookieParser
+app.use(cookieParser());
+
+// set view engine
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+// set static folder
+app.use(express.static('public'));
 //Start server
 io.on('connection', function() {
     console.log('Someone has Connected');
@@ -29,10 +64,34 @@ app.disable('x-powered-by');
 
 // express session
 app.use(session({
-    secret: 'secret_pin',
+    secret: 'secret',
     saveUninitialized: true,
     resave: true
-}))
+}));
+
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
 // connect flash
 app.use(flash());
 
@@ -50,34 +109,6 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.use('/users', users);
 
-//set port
-app.set('port', process.env.PORT || 5000);
-
-//mongo config
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
-var db = mongoose.connection;
-
-
-//connect to db
-db.on('error', console.error.bind(console, "connection error :"));
-db.once('open', function() {
-    console.log('Connected successfully to the db');
-});
-
-// create application/json parser
-app.use(bodyParser.json());
-
-// create application/x-www-form-urlencoded parser
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// set view engine
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-
-// serve static files
-app.use(express.static('public'));
 
 //start server
 http.listen(app.get('port'), function() {
