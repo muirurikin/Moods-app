@@ -10,6 +10,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var flash = require('connect-flash');
+var session = require('express-session')
 
 var mongoose = require('mongoose');
 var formidable = require('formidable');
@@ -26,6 +27,12 @@ io.on('connection', function() {
 
 app.disable('x-powered-by');
 
+// express session
+app.use(session({
+    secret: 'secret_pin',
+    saveUninitialized: true,
+    resave: true
+}))
 // connect flash
 app.use(flash());
 
