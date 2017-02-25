@@ -5,13 +5,13 @@
 
     <title>Moods App</title>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/reset.css">
 
 
   </head>
   <body>
-    <form action="/login" method="POST">
+    <form action="/users/login" method="POST">
     <label>
       Email
       <input type="email" name="email" placeholder="Email address" required>
@@ -21,6 +21,9 @@
       <input type="password" name="Password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
     </label>
       <input class="btn btn-default" type="submit" name="Log in" value="Log in">
+      <p>
+        New user? Register <a href="/users/register">here.</a>
+      </p>
     </form>
   </body>
   </html>
