@@ -2,15 +2,21 @@
 var User = require('../models/user');
 
 module.exports = {
+  /**
+   *
+   * Going by the restful routing approach users routes should correspond to the following
+   * functions, new  =>  this should render the registration template, create => this route
+   * creates a new user saves him/her to the database and redirect to specified route,
+   * edit => Edit function renders the users edit template,
+   * put => PUT should uptate a user and redirect to specified route
+   * delete => deletes the user and redirect
+   */
 
   new: function(req, res) {
     res.render('register');
   },
 
   create: function(req, res) {
-
-    console.log(req.body);
-
     var user = new User();
 
     user.username        =  req.body.username;
@@ -31,11 +37,11 @@ module.exports = {
       res.render('register',{ errors:errors });
       console.log(errors);
     } else{
+      // should probably check if user with similar emails already exists before
+      // we create the user
       User.createUser(user, function(err, newUser){
         if(err) throw err;
-        // console.log(user);
         // flash a success message if no error thrown
-        console.log("user to be created", newUser);
         req.flash('success_msg', 'You are now registered. Please login');
 
         console.log("created user", newUser);
