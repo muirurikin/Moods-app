@@ -80,16 +80,3 @@ module.exports    =  function(passport) {
       });
     }));
 };
-
-function generateRefreshToken(req, res, next) {
-  if (req.query.permanent === 'true') {
-    req.token.refreshToken = req.user.clientId.toString() + '.' + crypto.randomBytes(
-      40).toString('hex');
-    db.client.storeToken({
-      id: req.user.clientId,
-      refreshToken: req.token.refreshToken
-    }, next);
-  } else {
-    next();
-  }
-}
