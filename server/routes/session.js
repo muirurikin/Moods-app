@@ -1,6 +1,12 @@
 var passport   =  require('passport');
 
 module.exports = {
+  /**
+   *
+   * Any routes that deals with login/logout is basically a session, and session can either be
+   * created => login, deleted/destroyed => logout or new => renders login page
+   *
+   */
   new: function(req, res) {
     res.render('login');
   },
