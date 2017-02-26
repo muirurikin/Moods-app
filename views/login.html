@@ -13,14 +13,17 @@
   <body>
     <form action="/users/login" method="POST">
     <label>
-      Email
-      <input type="email" name="email" placeholder="Email address" required>
+      Name
+      <input type="text" name="username" placeholder="Username" required>
     </label>
     <label>
       Password
       <input type="password" name="Password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
     </label>
       <input class="btn btn-default" type="submit" name="Log in" value="Log in">
+      <p>
+        New user? Register <a href="/users/register">here.</a>
+      </p>
     </form>
   </body>
   </html>
