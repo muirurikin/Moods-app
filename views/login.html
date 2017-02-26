@@ -2,23 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-
     <title>Moods App</title>
-
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/reset.css">
-
-
   </head>
   <body>
-    <form action="/users/login" method="POST">
+    <form action="/login" method="POST">
     <label>
       Email
       <input type="email" name="email" placeholder="Email address" required>
     </label>
     <label>
       Password
-      <input type="password" name="Password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+      <input type="password" name="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
     </label>
       <input class="btn btn-default" type="submit" name="Log in" value="Log in">
       <p>
