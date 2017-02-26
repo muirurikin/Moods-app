@@ -25,7 +25,7 @@ app.set('port', process.env.PORT || 5000);
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
-console.log(process.env.MONGODB_URI);
+// console.log(process.env.MONGODB_URI);
 require('./server/config/passport.js')(passport);
 
 //connect to db
